@@ -1,3 +1,9 @@
+import { Header } from "../components/shared/header";
+
 export default function Home() {
-  return <div>web</div>;
+  return (
+    <div className="bg-bg-dark min-h-screen">
+      <Header />
+    </div>
+  );
 }
