@@ -2,8 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const IFRAME_WIDTH = 1280;
-const IFRAME_HEIGHT = 720;
-const SCROLLBAR_WIDTH = 20;
+const IFRAME_HEIGHT = 820;
 
 export default function IframePreview({ src }: { src: string }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -21,19 +20,22 @@ export default function IframePreview({ src }: { src: string }) {
   }, []);
 
   return (
-    <div ref={wrapperRef} className="relative w-full aspect-video overflow-hidden">
+    <div
+      ref={wrapperRef}
+      className="relative w-full overflow-hidden rounded-xl"
+      style={{ height: IFRAME_HEIGHT * scale }}
+    >
       <iframe
         src={src}
         loading="lazy"
         sandbox="allow-scripts allow-same-origin allow-forms"
         scrolling="no"
         style={{
-          width: IFRAME_WIDTH + SCROLLBAR_WIDTH,
+          width: IFRAME_WIDTH + 20,
           height: IFRAME_HEIGHT,
           transformOrigin: "top left",
           transform: `scale(${scale})`,
           border: "none",
-          overflow: "hidden",
           position: "absolute",
           top: 0,
           left: 0,
